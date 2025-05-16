@@ -1,0 +1,42 @@
+.singlectn{
+    justify-items: center;
+    margin-top: 100px;
+}
+.single{
+   width: 1200px;
+   text-align: center;
+    text-wrap-style: pretty;
+    border: 1px solid;
+    padding: 5px;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+}
+.single img{
+    width: 300px;
+    height: 300px; 
+
+}
+.single span{
+    font-size: 17px;
+    color: brown;
+}
+.single h4{
+   padding: 5px;
+   margin: 5px;
+}
+.single button{
+    margin-right: 25px;
+    padding: 8px;
+    background-color:  slateblue;
+    color: #000;
+    font-size: 15px;
+    font-weight: 600;
+    text-shadow: whitesmoke 1px 1px 10px;
+}
+.single button:hover{
+    color: whitesmoke;
+    text-shadow: black 1px 1px 10px;
+    font-weight: 700;
+}
+.single button:active{
+    background-color: #000;
+}
