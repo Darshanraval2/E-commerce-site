@@ -25,7 +25,6 @@ const Whishlist = () => {
       toast.info('Item already in cart');
     }
   };
-
   return (
     <div className="wishlist-container">
       <div className="wishlist-header">
