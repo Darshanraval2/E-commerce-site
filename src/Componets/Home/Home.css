@@ -2,6 +2,7 @@
     width: 250px;
     transition-duration: 1s;
     height: 250px;
+    object-fit: contain;
 }
 .data img:hover{
     transform: scale(1.1);
@@ -13,10 +14,11 @@ a{
 
 .homectn{
     display: grid;
-    grid-template-columns: 300px 300px 300px 300px;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 300px));
     justify-content: center;
-    gap: 50px;
+    gap: 30px;
     text-align: center;
+    padding: 20px;
 }
 .data{
     overflow: hidden;
@@ -50,18 +52,19 @@ a{
 }
 
 .category{
-    
     display: flex;
-    justify-content: space-around;
-    gap: 50px;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
     margin: 30px;
     align-items: center;
     margin-top: 100px;
+    padding: 0 20px;
 }
 .category input{
-  width: 250px;
-  padding: 10px;
-
+    width: 250px;
+    padding: 10px;
+    max-width: 100%;
 }
 .category button{
     background-color: transparent;
@@ -98,5 +101,81 @@ a{
 .whis button:hover{
     color: rgb(249, 60, 92);
     cursor: pointer;
+}
+
+/* Responsive styles */
+@media screen and (max-width: 1200px) {
+    .homectn {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media screen and (max-width: 992px) {
+    .homectn {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .category {
+        gap: 15px;
+    }
+    
+    .category button {
+        font-size: 16px;
+        padding: 8px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .homectn {
+        grid-template-columns: repeat(1, 1fr);
+        gap: 20px;
+    }
+    
+    .category {
+        flex-direction: column;
+        align-items: stretch;
+        margin-top: 50px;
+    }
+    
+    .category input {
+        width: 100%;
+    }
+    
+    .srch {
+        width: 100%;
+    }
+    
+    .select {
+        width: 100%;
+    }
+    
+    .select select {
+        width: 100%;
+        padding: 10px;
+    }
+    
+    .data {
+        width: 100%;
+        max-width: 300px;
+        margin: 0 auto;
+    }
+    
+    .data img {
+        width: 100%;
+        height: auto;
+        max-height: 250px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .category button {
+        width: 100%;
+        margin: 5px 0;
+    }
+    
+    .data {
+        height: auto;
+        min-height: 375px;
+    }
 }
 
