@@ -1,36 +1,57 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Link } from "react-router-dom"
 import "./Navbar.css"
 import { useSelector } from 'react-redux'
 
 const Navbar = () => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const cart = useSelector((state) => state.cart);
   const subtotal = cart.reduce((total, item) => total + item.price * item.quantity, 0);
+
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
 
   return (
     <header className='header'>
       <nav className='navbar'>
-        <Link to='/'><h1>
-          <i className="fa-solid fa-hippo"></i>
-          <span>Hippocart</span>
-        </h1></Link>
-        
-        <Link to='/'>HOME</Link>
-        
-        <div>
-          <Link to='Cart'>
-            CART <i className="fa-solid fa-cart-shopping"></i> {cart.length}
+        <Link to='/' className="logo">
+          <h1>
+            <i className="fa-solid fa-hippo"></i>
+            <span>Hippocart</span>
+          </h1>
+        </Link>
+
+        <button className="mobile-menu-btn" onClick={toggleMenu}>
+          <i className={`fa-solid ${isMenuOpen ? 'fa-xmark' : 'fa-bars'}`}></i>
+        </button>
+
+        <div className={`nav-links ${isMenuOpen ? 'active' : ''}`}>
+          <Link to='/' onClick={() => setIsMenuOpen(false)}>
+            <i className="fa-solid fa-house"></i>
+            HOME
           </Link>
-          <span>(${subtotal.toFixed(2)})</span>
+          
+          <Link to='Cart' onClick={() => setIsMenuOpen(false)}>
+            <i className="fa-solid fa-cart-shopping"></i>
+            CART
+            <span className="cart-count">{cart.length}</span>
+          </Link>
+          
+          <Link to="Whishlist" onClick={() => setIsMenuOpen(false)}>
+            <i className="fa-solid fa-heart"></i>
+            WISHLIST
+          </Link>
+          
+          <Link to='Log' onClick={() => setIsMenuOpen(false)}>
+            <i className="fa-solid fa-user"></i>
+            LOGIN
+          </Link>
+
+          <div className="cart-total">
+            <span>Total: ${subtotal.toFixed(2)}</span>
+          </div>
         </div>
-        
-        <Link to="Whishlist">
-          <i className="fa-solid fa-heart"></i> WISHLIST
-        </Link>
-        
-        <Link to='Log'>
-          <i className="fa-solid fa-user"></i>
-        </Link>
       </nav>
     </header>
   )
